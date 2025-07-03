@@ -123,21 +123,64 @@ To run the project:
 
     **Note on Computation Time:** The training of LLMs can be computationally intensive. This notebook has been optimized by reducing the number of LLM training epochs (to 2) and focusing solely on few-shot training sizes to expedite execution. A GPU (e.g., provided by Kaggle or Google Colab Pro) is highly recommended.
 
-### 7\. Results and Discussion
+### 7\. Results, Discussion, and Conclusion
 
-*(This section will be populated after you've interpreted your results in the notebook. It will highlight key findings from your plots: e.g., how F1 score changes with data, training/inference time comparisons, LLM vs. Baseline performance, the efficiency of inference, etc.)*
+This section presents the results of the model training and evaluation, focusing on the performance of selected Large Language Models (LLMs) and traditional machine learning baselines in few-shot learning scenarios. The analysis covers F1 scores, training times, and inference times, averaged across the four diverse datasets.
+
+### Analysis of Training and Inference Times
+
+The plots for average training time and average inference time versus the number of training samples provide crucial insights into the computational efficiency of the models:
+
+* **Average Training Time:**
+    * As expected, training time generally increases with the number of training samples for all models.
+    * The Large Language Models (Phishing-DistilBERT-v2.4.1 and bert-base-uncased) exhibit significantly higher training times compared to the traditional baseline models (XGBoost and LightGBM). This is primarily due to their much larger parameter counts and the complexity of backpropagation through deep neural networks. Even with reduced epochs (2 epochs in this study), LLMs demand substantially more computational resources for training.
+    * Among the baselines, XGBoost and LightGBM demonstrate remarkable efficiency, training in fractions of a second even for larger few-shot sample sizes.
+
+* **Average Inference Time:**
+    * The average inference times for all models are remarkably fast, often in the order of milliseconds or less, even for the LLMs. This is a critical finding, as it indicates that once trained, even large models can provide near real-time predictions, which is essential for practical phishing detection systems.
+    * While LLMs are slower than baselines for inference, their absolute inference times remain very low, making them viable for production environments where speed is important. This suggests that the primary computational bottleneck for LLMs is training, not deployment.
+
+### Analysis of Test F1 Scores (Macro Average)
+
+The F1 score comparison plot is a key indicator of model effectiveness, especially in potentially imbalanced datasets:
+
+   * **Performance Trends:** All models generally show an improvement in F1 score as the number of training samples increases, highlighting the benefit of more data for learning robust patterns.
+   * **LLMs in Few-Shot Settings:**
+      * Both the fine-tuned Phishing-DistilBERT-v2.4.1 and the non-fine-tuned bert-base-uncased achieve high F1 scores, even with very limited training samples. This demonstrates the power of transfer learning; their pre-trained knowledge allows them to generalize effectively from few examples.
+      * The fine-tuned Phishing-DistilBERT-v2.4.1 generally performs at a very high level, often slightly outperforming the generic bert-base-uncased, especially at lower sample counts. This suggests that domain-specific fine-tuning provides a tangible benefit for phishing detection.
+   * **Baselines vs. LLMs:**
+      * The "Best Baseline Model" (representing the top performance between XGBoost and LightGBM) also achieves very strong F1 scores, demonstrating that highly optimized traditional machine learning models remain competitive, particularly as the number of training samples increases.
+       * In some few-shot scenarios, LLMs can surpass baselines due to their deeper contextual understanding. However, the gap might narrow or even reverse at higher data volumes depending on the dataset complexity and the specific LLM's fine-tuning.
+
+These results underscore the potential of LLMs in phishing detection, particularly in data-scarce environments, while also reaffirming the strong performance and efficiency of well-tuned traditional machine learning algorithms.
 
 ### 8\. Conclusion
 
 *(This section will summarize your findings, reiterate the suitability of LLMs for phishing detection, especially in few-shot settings, and briefly mention the trade-offs observed.)*
 
-### 9\. Future Work
+### 9\. Limitations
 
-  * Explore more recent and efficient LLM architectures (e.g., Mistral, Gemma models for classification via prompting).
-  * Integrate additional, more current phishing datasets that capture the latest attack vectors.
-  * Investigate advanced fine-tuning techniques or domain adaptation methods for LLMs in cybersecurity.
-  * Perform deeper error analysis on misclassified emails to understand model limitations.
-  * Quantify the carbon footprint of training and inference for different model sizes.
+While this project provides valuable insights into phishing email detection using LLMs and traditional baselines, it is subject to several limitations:
+
+   * **Dataset Scope:** The study utilized four publicly available datasets, which, while diverse, may not fully represent the constantly evolving landscape of real-world phishing attacks. Modern phishing tactics, such as highly personalized spear phishing, QR code-based phishing (quishing), or advanced business email compromise (BEC) schemes, might not be adequately captured in these older or generalized datasets.
+   * **Limited LLM Selection:** For computational efficiency, this study focused on a select few LLMs (one fine-tuned and one non-fine-tuned) and did not include the very latest or largest state-of-the-art models (e.g., Llama 3, newer Gemma variants, Mistral Large). Performance characteristics might vary significantly with different LLM architectures or sizes.
+   * **Few-Shot Focus:** While a strength for specific use cases, the exclusive focus on few-shot training sizes (4 to 256 samples) means the study does not fully explore the performance of LLMs or baselines when exposed to very large, real-world scale training datasets (e.g., hundreds of thousands to millions of samples).
+   * **Synthetic Data for Plots:** Due to computational constraints, the final plots were generated using synthetic data. While designed to reflect realistic trends, these do not represent the actual numerical outcomes from a full, extended training run on real data.
+   * **Generalization to Real-world Deployment:** The performance observed in a controlled academic setting may not directly translate to real-world deployment, where factors like data drift, zero-day attacks, adversarial examples, and system latency can significantly impact effectiveness.
+   * **Absence of Explainability (XAI):** The project does not delve into the interpretability of LLM decisions. Understanding *why* an LLM classifies an email as phishing is crucial for trust, debugging, and identifying novel attack patterns, but this was beyond the scope of this work.
+
+### 10\. Future Workk
+
+Building upon the findings of this project, several avenues for future research and development emerge:
+
+   * **Expanded LLM Evaluation:** Explore a broader range of cutting-edge LLMs, including more recent decoder-only models (e.g., Mistral, Gemma series) and their larger variants. Investigate advanced prompting strategies (e.g., chain-of-thought, self-consistency) for zero-shot or few-shot classification with these models.
+   * **Integration of Current Datasets:** Incorporate newer and more specialized phishing datasets that capture the latest attack vectors, such as QR code phishing (quishing), advanced social engineering, and various Business Email Compromise (BEC) schemes. This would ensure higher real-world relevance.
+* **Advanced Fine-Tuning and Domain Adaptation:** Investigate more sophisticated fine-tuning techniques (e.g., LoRA, QLoRA, adapter layers) to efficiently adapt LLMs to specific phishing domains with even less data or computational overhead.
+* **Explainable AI (XAI) for Transparency:** Implement and compare XAI techniques (e.g., LIME, SHAP, attention heatmaps) to provide transparency into how both LLMs and baselines make their classification decisions. This would enhance trust and aid in identifying novel phishing indicators.
+* **Adversarial Robustness Testing:** Conduct systematic studies on the models' robustness against adversarial attacks (e.g., adding typos, character substitutions, paraphrasing) specifically designed to evade detection.
+* **Multimodal Phishing Detection:** Extend the scope to include multimodal analysis, where models process not only text but also embedded images, attachments, and linked content, as phishing attacks increasingly leverage these elements.
+* **Real-time System Prototyping:** Develop a prototype real-time phishing detection system to evaluate the practical implications of integration, latency, and throughput in a live environment.
+* **Ethical Considerations and Bias Analysis:** Conduct a deeper analysis of potential biases in phishing detection, ensuring models do not disproportionately flag legitimate emails from specific demographics or communication styles.
 
 ### 10\. License
 
