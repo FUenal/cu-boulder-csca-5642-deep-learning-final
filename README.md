@@ -149,6 +149,18 @@ This project is licensed under the MIT License - see the [LICENSE](https://www.g
   * Datasets sourced from respective public repositories (links provided in the notebook).
   * Hugging Face Transformers library and ecosystem.
 
+## Author 
+
+**Fatih Uenal**
+
+🎓 MSc Computer Science & AI, CU Boulder
+
+🌐 Webpage: https://dataiq.netlify.app/
+
+🔗 LinkedIn: https://www.linkedin.com/in/fatih-uenal/
+
+📊 Kaggle Notebook: [https://www.kaggle.com/code/fatihuenal/csca-5632-unsupervised-algorithms-final-2](https://www.kaggle.com/code/fatihuenal/csca-5642-deep-learning-final-3)
+
 <!-- end list -->
 
 ```
