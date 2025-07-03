@@ -154,11 +154,7 @@ The F1 score comparison plot is a key indicator of model effectiveness, especial
 
 These results underscore the potential of LLMs in phishing detection, particularly in data-scarce environments, while also reaffirming the strong performance and efficiency of well-tuned traditional machine learning algorithms.
 
-### 8\. Conclusion
-
-*(This section will summarize your findings, reiterate the suitability of LLMs for phishing detection, especially in few-shot settings, and briefly mention the trade-offs observed.)*
-
-### 9\. Limitations
+### 8\. Limitations
 
 While this project provides valuable insights into phishing email detection using LLMs and traditional baselines, it is subject to several limitations:
 
@@ -169,24 +165,20 @@ While this project provides valuable insights into phishing email detection usin
    * **Generalization to Real-world Deployment:** The performance observed in a controlled academic setting may not directly translate to real-world deployment, where factors like data drift, zero-day attacks, adversarial examples, and system latency can significantly impact effectiveness.
    * **Absence of Explainability (XAI):** The project does not delve into the interpretability of LLM decisions. Understanding *why* an LLM classifies an email as phishing is crucial for trust, debugging, and identifying novel attack patterns, but this was beyond the scope of this work.
 
-### 10\. Future Workk
+### 9\. Future Workk
 
 Building upon the findings of this project, several avenues for future research and development emerge:
 
    * **Expanded LLM Evaluation:** Explore a broader range of cutting-edge LLMs, including more recent decoder-only models (e.g., Mistral, Gemma series) and their larger variants. Investigate advanced prompting strategies (e.g., chain-of-thought, self-consistency) for zero-shot or few-shot classification with these models.
    * **Integration of Current Datasets:** Incorporate newer and more specialized phishing datasets that capture the latest attack vectors, such as QR code phishing (quishing), advanced social engineering, and various Business Email Compromise (BEC) schemes. This would ensure higher real-world relevance.
-* **Advanced Fine-Tuning and Domain Adaptation:** Investigate more sophisticated fine-tuning techniques (e.g., LoRA, QLoRA, adapter layers) to efficiently adapt LLMs to specific phishing domains with even less data or computational overhead.
-* **Explainable AI (XAI) for Transparency:** Implement and compare XAI techniques (e.g., LIME, SHAP, attention heatmaps) to provide transparency into how both LLMs and baselines make their classification decisions. This would enhance trust and aid in identifying novel phishing indicators.
-* **Adversarial Robustness Testing:** Conduct systematic studies on the models' robustness against adversarial attacks (e.g., adding typos, character substitutions, paraphrasing) specifically designed to evade detection.
-* **Multimodal Phishing Detection:** Extend the scope to include multimodal analysis, where models process not only text but also embedded images, attachments, and linked content, as phishing attacks increasingly leverage these elements.
-* **Real-time System Prototyping:** Develop a prototype real-time phishing detection system to evaluate the practical implications of integration, latency, and throughput in a live environment.
-* **Ethical Considerations and Bias Analysis:** Conduct a deeper analysis of potential biases in phishing detection, ensuring models do not disproportionately flag legitimate emails from specific demographics or communication styles.
+   * **Advanced Fine-Tuning and Domain Adaptation:** Investigate more sophisticated fine-tuning techniques (e.g., LoRA, QLoRA, adapter layers) to efficiently adapt LLMs to specific phishing domains with even less data or computational overhead.
+   * **Explainable AI (XAI) for Transparency:** Implement and compare XAI techniques (e.g., LIME, SHAP, attention heatmaps) to provide transparency into how both LLMs and baselines make their classification decisions. This would enhance trust and aid in identifying novel phishing indicators.
+   * **Adversarial Robustness Testing:** Conduct systematic studies on the models' robustness against adversarial attacks (e.g., adding typos, character substitutions, paraphrasing) specifically designed to evade detection.
+   * **Multimodal Phishing Detection:** Extend the scope to include multimodal analysis, where models process not only text but also embedded images, attachments, and linked content, as phishing attacks increasingly leverage these elements.
+   * **Real-time System Prototyping:** Develop a prototype real-time phishing detection system to evaluate the practical implications of integration, latency, and throughput in a live environment.
+   * **Ethical Considerations and Bias Analysis:** Conduct a deeper analysis of potential biases in phishing detection, ensuring models do not disproportionately flag legitimate emails from specific demographics or communication styles.
 
-### 10\. License
-
-This project is licensed under the MIT License - see the [LICENSE](https://www.google.com/search?q=LICENSE) file for details.
-
-### 11\. Acknowledgments
+### 10\. Acknowledgments
 
   * Inspired by "Spam-T5: Benchmarking Large Language Models for Few-Shot Email Spam Detection" by Labonne and Moran.
   * Datasets sourced from respective public repositories (links provided in the notebook).
