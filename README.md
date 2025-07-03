@@ -1,14 +1,4 @@
-Okay, great\! I have the `csca-5642-deep-learning-final-4.ipynb` notebook now. This is a solid starting point for generating your content.
 
-Let's get that README drafted for your GitHub repository. A good README provides a clear overview of your project, how to set it up, and what insights it offers.
-
------
-
-## **GitHub Repository README.md**
-
-Here's a draft README.md tailored to your project, incorporating the changes and focus you've implemented (few-shot learning, specific LLMs, baseline comparisons):
-
-````markdown
 # Phishing Email Detection with Large Language Models
 
 This repository contains a Jupyter notebook for a project investigating the effectiveness of Large Language Models (LLMs) in detecting phishing emails, particularly within few-shot learning scenarios. Inspired by the methodology outlined in the "Spam-T5: Benchmarking Large Language Models for Few-Shot Email Spam Detection" paper by Labonne and Moran, this project provides a self-contained environment for data preprocessing, model training, evaluation, and visualization.
