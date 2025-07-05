@@ -105,11 +105,9 @@ To run the project:
 1.  **Clone the repository:**
 
     ```bash
-    git clone [https://github.com/your-github-username/your-repo-name.git](https://github.com/your-github-username/your-repo-name.git)
+    git clone [https://github.com/FUenal/cu-boulder-csca-5642-deep-learning-final.git](https://github.com/FUenal/cu-boulder-csca-5642-deep-learning-final.git)
     cd your-repo-name
     ```
-
-    (Remember to replace `your-github-username/your-repo-name.git` with your actual repository URL).
 
 2.  **Open the notebook:**
     Open `csca-5642-deep-learning-final-4.ipynb` using Jupyter Lab, Jupyter Notebook, or VS Code.
