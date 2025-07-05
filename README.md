@@ -105,7 +105,7 @@ To run the project:
 1.  **Clone the repository:**
 
     ```bash
-    git clone [https://github.com/FUenal/cu-boulder-csca-5642-deep-learning-final.git](https://github.com/FUenal/cu-boulder-csca-5642-deep-learning-final.git)
+    git clone https://github.com/FUenal/cu-boulder-csca-5642-deep-learning-final.git
     cd your-repo-name
     ```
 
